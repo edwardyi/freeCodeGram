@@ -52,7 +52,7 @@ COPY ./image_files /
 # COPY ./php/php72.ini /usr/local/etc/php/php.ini
 
 RUN apk --update add curl \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.1 
 
 USER root
 
