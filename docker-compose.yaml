@@ -1,0 +1,38 @@
+version: '3.2'
+
+services:
+
+  web:
+    image: nginx:alpine
+    ports:
+        - "8080:80"
+    volumes:
+        - ./public:/var/www/html
+        - ./site.conf:/etc/nginx/conf.d/site.conf
+    links:
+        - php
+  php:
+    build: .
+    volumes:
+        - ./:/var/www/html
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=verysecret
+      - MYSQL_DATABASE=yii2advanced
+      - MYSQL_USER=yii2advanced
+      - MYSQL_PASSWORD=secret
+    volumes:
+      - my-data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    links:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+   my-data:
