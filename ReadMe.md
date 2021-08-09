@@ -14,3 +14,13 @@ https://github.com/netfira/php-7.2-fpm-alpine-laravel/blob/master/Dockerfile
 ```shell=
 docker-php-ext-install bcmath
 ```
+
+### nginx開啟debug mode
+
+nginx version: nginx/1.21.1
+
+https://stackoverflow.com/questions/36287157/docker-compose-nginx-php-fpm-file-not-found
+
+### project root
+
+https://kyleferg.com/laravel-development-with-docker/

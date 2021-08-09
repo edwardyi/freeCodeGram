@@ -7,14 +7,17 @@ services:
     ports:
         - "8080:80"
     volumes:
-        - ./public:/var/www/html
-        - ./site.conf:/etc/nginx/conf.d/site.conf
+        - ./:/var/www/html
+        - ./site.conf:/etc/nginx/conf.d/default.conf
     links:
         - php
   php:
     build: .
+    expose:
+      - "9000"
     volumes:
         - ./:/var/www/html
+    user: "33333"
   mysql:
     image: mysql:5.7
     environment:
